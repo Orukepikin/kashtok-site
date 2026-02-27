@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /404.html
+Sitemap: https://kashtok.com/sitemap.xml
+Crawl-delay: 1
