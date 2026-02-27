@@ -3,55 +3,325 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="format-detection" content="telephone=yes">
   <title>KashTok — Your Money, Your Move | Nigeria's Smartest Digital Wallet</title>
-  <meta name="description" content="KashTok gives you virtual cards, instant transfers, bill payments, and savings vaults — all in one calm app. Built for Nigerian money reality. Join the waitlist today.">
+  <meta name="description" content="KashTok gives you virtual cards, instant transfers, bill payments, and savings vaults — all in one calm app. Built for Nigerian money reality.">
   <meta name="robots" content="index, follow">
-  <meta name="author" content="KashTok">
-  <meta name="keywords" content="KashTok, fintech Nigeria, digital wallet Nigeria, virtual card Nigeria, save money Nigeria, bills payment app Nigeria, mobile banking Nigeria">
   <link rel="canonical" href="https://kashtok.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://kashtok.com/">
-  <meta property="og:title" content="KashTok — Your Money, Your Move | Nigeria's Smartest Digital Wallet">
-  <meta property="og:description" content="KashTok gives you virtual cards, instant transfers, bill payments, and savings vaults — all in one calm app. Built for Nigerian money reality. Join the waitlist today.">
+  <meta property="og:title" content="KashTok — Your Money, Your Move">
+  <meta property="og:description" content="Nigeria's smartest digital wallet. Spend, save and pay bills in one app.">
   <meta property="og:image" content="https://kashtok.com/android-chrome-512x512.png">
-  <meta property="og:site_name" content="KashTok">
-  <meta property="og:locale" content="en_NG">
+  <meta property="og:url" content="https://kashtok.com/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@kashtokapp">
-  <meta name="twitter:title" content="KashTok — Your Money, Your Move | Nigeria's Smartest Digital Wallet">
-  <meta name="twitter:description" content="KashTok gives you virtual cards, instant transfers, bill payments, and savings vaults — all in one calm app. Built for Nigerian money reality. Join the waitlist today.">
-  <meta name="twitter:image" content="https://kashtok.com/android-chrome-512x512.png">
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FinancialService","name":"KashTok","description":"Nigeria's smartest digital wallet — spend, save and pay bills in one app.","url":"https://kashtok.com","logo":"https://kashtok.com/android-chrome-512x512.png","areaServed":"Nigeria","sameAs":["https://twitter.com/kashtokapp","https://instagram.com/kashtokapp"]}
-  </script>
-  
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#6B21FF">
-  <meta name="msapplication-TileColor" content="#6B21FF">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
   <style>
-    nav { padding-left: max(5%, env(safe-area-inset-left)); padding-right: max(5%, env(safe-area-inset-right)); }
-    #back-top { bottom: max(2rem, env(safe-area-inset-bottom)); right: max(2rem, env(safe-area-inset-right)); }
-    #cookie-banner { padding-bottom: max(1.25rem, env(safe-area-inset-bottom)); }
+    /* ── TOKENS ── */
+    :root {
+      --bg:#06040F; --bg2:#09071A; --surface:#0D0A1E; --surface2:#120F25;
+      --card:#100D22; --card2:#161230;
+      --purple:#6B21FF; --purple2:#7C3AFF; --purple3:#5C17E8;
+      --purple-lt:#9B6BFF; --purple-xl:#C4A0FF; --violet:#A855F7;
+      --white:#FFF; --off-white:#EEE9FF; --lavender:#C9B8FF;
+      --muted:#8878AA; --muted2:#5A5070;
+      --border:rgba(107,33,255,.15); --border2:rgba(107,33,255,.28);
+      --border3:rgba(255,255,255,.07);
+      --font-h:'Sora',sans-serif; --font-b:'DM Sans',sans-serif;
+      --r3:28px; --r2:18px; --r:10px;
+      --trans:.3s cubic-bezier(.4,0,.2,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px;-webkit-text-size-adjust:100%;overflow-x:hidden}
+    body{background:var(--bg);color:var(--white);font-family:var(--font-b);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    ul{list-style:none}
+    button,input{font-family:var(--font-b)}
+    input{font-size:16px!important;-webkit-appearance:none}
+    *{-webkit-tap-highlight-color:transparent}
+    /* GRAIN */
+    body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");background-size:128px;opacity:.025}
+    /* GRID */
+    .grid-bg{position:absolute;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(107,33,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(107,33,255,.04) 1px,transparent 1px);background-size:60px 60px}
+    /* BLOBS */
+    .blob{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0;animation:blob-drift 14s ease-in-out infinite}
+    @keyframes blob-drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.05)}66%{transform:translate(-20px,15px) scale(.95)}}
+    .blob-a{background:radial-gradient(circle,rgba(107,33,255,.22) 0%,transparent 70%);width:600px;height:600px}
+    .blob-b{background:radial-gradient(circle,rgba(168,85,247,.15) 0%,transparent 70%);width:400px;height:400px;animation-delay:-5s}
+    /* TYPOGRAPHY */
+    h1,h2,h3,h4{font-family:var(--font-h);font-weight:800;line-height:1.1;letter-spacing:-.03em}
+    h1{font-size:clamp(2.8rem,7vw,6rem)}
+    h2{font-size:clamp(2rem,4.5vw,3.8rem)}
+    h3{font-size:1.4rem}
+    h4{font-size:1.15rem;font-weight:700}
+    p{color:var(--muted);font-size:1.05rem;line-height:1.8}
+    .gradient-text{background:linear-gradient(135deg,var(--white) 30%,var(--purple-xl) 70%,var(--lavender) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    /* NAVBAR */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:72px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(6,4,15,.88);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid rgba(107,33,255,.15);transition:all var(--trans)}
+    nav.scrolled{background:rgba(6,4,15,.97);border-bottom-color:rgba(107,33,255,.3);box-shadow:0 2px 40px rgba(0,0,0,.6)}
+    .nav-logo{display:flex;align-items:center;gap:.65rem;font-family:var(--font-h);font-weight:800;font-size:1.35rem;letter-spacing:-.04em}
+    .nav-logo-img{width:34px;height:34px;border-radius:9px;object-fit:cover;box-shadow:0 0 18px rgba(107,33,255,.5)}
+    .nav-logo span{color:var(--purple2)}
+    .nav-links{display:flex;align-items:center;gap:2rem}
+    .nav-links a{color:var(--muted);font-size:.875rem;font-weight:500;transition:color var(--trans)}
+    .nav-links a:hover,.nav-links a.active{color:var(--white)}
+    .nav-cta{background:linear-gradient(135deg,var(--purple),var(--purple2))!important;color:var(--white)!important;padding:.55rem 1.4rem;border-radius:100px;font-weight:700!important;font-size:.85rem!important;box-shadow:0 0 24px rgba(107,33,255,.4);border:1px solid rgba(255,255,255,.12)!important}
+    .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 32px rgba(107,33,255,.6)!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--trans)}
+    .mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(6,4,15,.98);backdrop-filter:blur(28px);border-bottom:1px solid var(--border);padding:2rem 5%;z-index:999;flex-direction:column}
+    .mobile-menu a{color:var(--muted);font-size:1rem;font-weight:500;padding:.9rem 0;border-bottom:1px solid rgba(107,33,255,.1);transition:color var(--trans)}
+    .mobile-menu a:last-child{border:none;color:var(--purple2);font-weight:700;margin-top:.5rem}
+    .mobile-menu.open{display:flex}
+    /* SECTIONS */
+    section{padding:6rem 5%;position:relative;overflow:hidden}
+    .container{max-width:1200px;margin:0 auto}
+    .section-label{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--purple2);margin-bottom:1rem}
+    .section-label::before{content:'';width:18px;height:1.5px;background:linear-gradient(90deg,var(--purple),var(--violet))}
+    .section-head{margin-bottom:3rem}
+    .section-head.center{text-align:center}
+    .section-head.center .section-label{justify-content:center}
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 2rem;border-radius:100px;font-weight:700;font-size:.95rem;cursor:pointer;transition:all var(--trans);border:none;line-height:1;font-family:var(--font-h)}
+    .btn-primary{background:linear-gradient(135deg,var(--purple) 0%,var(--purple2) 60%,var(--violet) 100%);color:var(--white);box-shadow:0 4px 30px rgba(107,33,255,.4)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 50px rgba(107,33,255,.6)}
+    .btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.2)}
+    .btn-outline:hover{border-color:var(--purple2);background:rgba(107,33,255,.08);transform:translateY(-2px)}
+    .btn-ghost{background:rgba(107,33,255,.1);color:var(--purple-xl);border:1px solid var(--border2)}
+    .btn-ghost:hover{background:rgba(107,33,255,.2);transform:translateY(-2px)}
+    .btn-lg{padding:1.1rem 2.5rem;font-size:1.05rem}
+    .btn-row{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+    /* HERO */
+    .hero{min-height:100vh;display:flex;align-items:center;padding:9rem 5% 5rem}
+    .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;background:rgba(107,33,255,.12);border:1px solid rgba(107,33,255,.3);border-radius:100px;padding:.35rem .9rem .35rem .5rem;margin-bottom:1.75rem}
+    .eyebrow-dot{width:22px;height:22px;background:rgba(107,33,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .eyebrow-dot::after{content:'';width:8px;height:8px;background:var(--purple2);border-radius:50%;display:block;animation:pulse-dot 1.8s infinite}
+    @keyframes pulse-dot{0%,100%{transform:scale(1)}50%{transform:scale(.6);opacity:.5}}
+    .eyebrow-text{font-size:.75rem;font-weight:700;color:var(--purple-xl);letter-spacing:.06em}
+    .hero h1{margin-bottom:1.5rem}
+    .hero-desc{font-size:1.15rem;max-width:500px;margin-bottom:2.5rem}
+    .trust-row{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;margin-top:2rem}
+    .trust-pill{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--muted);font-weight:500}
+    .trust-pill::before{content:'✓';color:var(--purple2);font-weight:800}
+    /* PHONE */
+    .hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+    .phone-glow-ring{position:absolute;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(107,33,255,.2) 0%,transparent 65%);animation:pulse-ring 5s ease-in-out infinite}
+    @keyframes pulse-ring{0%,100%{transform:scale(1)}50%{transform:scale(1.08);opacity:.7}}
+    .phone-float{position:relative;z-index:3;animation:phone-float 7s ease-in-out infinite}
+    @keyframes phone-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-18px) rotate(1deg)}}
+    .phone-shell{width:270px;background:linear-gradient(160deg,#1D1636 0%,#100D22 100%);border-radius:44px;border:1.5px solid rgba(107,33,255,.3);padding:22px 16px 28px;box-shadow:0 50px 100px rgba(0,0,0,.7),0 0 80px rgba(107,33,255,.2),inset 0 1px 0 rgba(255,255,255,.07);position:relative;overflow:hidden}
+    .phone-shell::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:76px;height:26px;background:#06040F;border-radius:0 0 16px 16px;z-index:10}
+    .ph-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem;padding-top:.5rem}
+    .ph-greeting{font-size:.7rem;color:var(--muted)}
+    .ph-greeting strong{color:var(--white);display:block;font-family:var(--font-h);font-size:.82rem}
+    .ph-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--violet));display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800}
+    .ph-balance{background:linear-gradient(135deg,rgba(107,33,255,.25) 0%,rgba(168,85,247,.15) 100%);border:1px solid rgba(107,33,255,.3);border-radius:18px;padding:1.1rem;margin-bottom:1rem;position:relative;overflow:hidden}
+    .ph-balance::before{content:'';position:absolute;top:-40px;right:-40px;width:110px;height:110px;background:radial-gradient(circle,rgba(107,33,255,.3) 0%,transparent 70%)}
+    .ph-bal-label{font-size:.6rem;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase}
+    .ph-bal-amount{font-family:var(--font-h);font-size:1.55rem;font-weight:800;letter-spacing:-.03em}
+    .ph-bal-amount span{font-size:.8rem;color:var(--purple-xl);margin-right:.15rem}
+    .ph-bal-change{font-size:.62rem;color:#82FF9E;font-weight:600;margin-top:.2rem}
+    .ph-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:1rem}
+    .ph-action{display:flex;flex-direction:column;align-items:center;gap:.35rem}
+    .ph-action-ic{width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid rgba(107,33,255,.2);display:flex;align-items:center;justify-content:center;font-size:.95rem}
+    .ph-action-lbl{font-size:.52rem;color:var(--muted2);text-align:center}
+    .ph-sec-hdr{font-size:.6rem;color:var(--muted2);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem}
+    .ph-tx{display:flex;align-items:center;justify-content:space-between;padding:.42rem 0;border-bottom:1px solid rgba(107,33,255,.06)}
+    .ph-tx:last-child{border:none}
+    .ph-tx-l{display:flex;align-items:center;gap:.55rem}
+    .ph-tx-ic{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem}
+    .ph-tx-nm{font-size:.67rem;color:var(--off-white);font-weight:600}
+    .ph-tx-dt{font-size:.57rem;color:var(--muted2)}
+    .ph-tx-am{font-size:.72rem;font-weight:700;font-family:var(--font-h)}
+    .tx-neg{color:#FF8080}.tx-pos{color:#82FF9E}
+    .chip{position:absolute;z-index:4;background:rgba(16,13,34,.92);border:1px solid rgba(107,33,255,.3);border-radius:14px;padding:.75rem 1rem;backdrop-filter:blur(20px);box-shadow:0 16px 48px rgba(0,0,0,.5)}
+    .chip-1{top:8%;right:-18px;animation:chip-float 6s ease-in-out infinite}
+    .chip-2{bottom:18%;left:-24px;animation:chip-float 8s ease-in-out infinite .8s}
+    @keyframes chip-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .chip-val{font-family:var(--font-h);font-size:1.05rem;font-weight:800}
+    .chip-val.green{color:#82FF9E}
+    .chip-lbl{font-size:.6rem;color:var(--muted);margin-top:.1rem}
+    .chip-icon{font-size:1.2rem;margin-bottom:.3rem}
+    /* TICKER */
+    .ticker-wrap{overflow:hidden;padding:1rem 0;background:rgba(107,33,255,.06);border-top:1px solid rgba(107,33,255,.15);border-bottom:1px solid rgba(107,33,255,.15)}
+    .ticker-track{display:flex;gap:2.5rem;width:max-content;animation:marquee 25s linear infinite}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .ticker-item{display:flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;color:var(--muted2);white-space:nowrap;letter-spacing:.08em;text-transform:uppercase}
+    .ticker-dot{color:var(--purple2)}
+    .ticker-item strong{color:var(--lavender)}
+    /* STATS */
+    .stats-band{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3.5rem 5%}
+    .stats-inner{display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:0 auto}
+    .stat-box{text-align:center;padding:1.5rem 2rem;border-right:1px solid var(--border)}
+    .stat-box:last-child{border-right:none}
+    .stat-number{font-family:var(--font-h);font-size:3rem;font-weight:800;line-height:1;letter-spacing:-.04em;margin-bottom:.35rem}
+    .stat-number .accent{color:var(--purple2)}
+    .stat-text{font-size:.825rem;color:var(--muted2);font-weight:500}
+    /* FEATURES */
+    .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .feat-card{background:var(--card);border:1px solid var(--border3);border-radius:var(--r3);padding:2.25rem;position:relative;overflow:hidden;transition:all var(--trans)}
+    .feat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--purple2),transparent);opacity:0;transition:opacity var(--trans)}
+    .feat-card:hover{transform:translateY(-6px);border-color:var(--border2)}
+    .feat-card:hover::after{opacity:1}
+    .feat-card.span2{grid-column:span 2}
+    .feat-icon{width:54px;height:54px;border-radius:16px;background:rgba(107,33,255,.12);border:1px solid rgba(107,33,255,.25);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.5rem;transition:transform var(--trans)}
+    .feat-card:hover .feat-icon{transform:scale(1.1)}
+    .feat-card h3{margin-bottom:.6rem;font-size:1.2rem}
+    .feat-card p{font-size:.9rem}
+    .feat-badge{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .6rem;border-radius:100px;background:rgba(107,33,255,.1);color:var(--purple-xl);border:1px solid rgba(107,33,255,.2);margin-bottom:.9rem}
+    /* NIGERIA REALITY SECTION */
+    .reality-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+    .reality-card{background:var(--card);border:1px solid var(--border3);border-radius:var(--r3);padding:2rem;display:flex;gap:1.5rem;align-items:flex-start;transition:all var(--trans)}
+    .reality-card:hover{border-color:var(--border2);transform:translateY(-4px)}
+    .reality-icon{font-size:2rem;flex-shrink:0;width:56px;height:56px;border-radius:16px;background:rgba(107,33,255,.1);border:1px solid rgba(107,33,255,.2);display:flex;align-items:center;justify-content:center}
+    /* MINI CHART */
+    .mini-chart{display:flex;align-items:flex-end;gap:4px;height:52px;margin-top:1.25rem}
+    .bar{flex:1;border-radius:4px 4px 0 0;background:rgba(107,33,255,.25);transition:all var(--trans)}
+    .bar.hi{background:linear-gradient(180deg,var(--purple2) 0%,var(--purple3) 100%)}
+    .feat-card:hover .bar.hi{background:linear-gradient(180deg,var(--violet) 0%,var(--purple2) 100%)}
+    /* STEPS */
+    .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+    .step-card{text-align:center;padding:2.25rem 1.5rem;background:var(--card);border:1px solid var(--border3);border-radius:var(--r3);transition:all var(--trans)}
+    .step-card:hover{border-color:var(--border2);transform:translateY(-6px);box-shadow:0 20px 60px rgba(107,33,255,.12)}
+    .step-num{width:64px;height:64px;border-radius:50%;background:rgba(107,33,255,.1);border:1.5px solid rgba(107,33,255,.3);margin:0 auto 1.25rem;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:1.4rem;font-weight:800;color:var(--purple2);transition:all var(--trans)}
+    .step-card:hover .step-num{background:rgba(107,33,255,.2);box-shadow:0 0 30px rgba(107,33,255,.3)}
+    .step-card h4{margin-bottom:.6rem}
+    .step-card p{font-size:.875rem}
+    /* COMPARE TABLE */
+    .compare-wrap{background:var(--card);border:1px solid var(--border2);border-radius:var(--r3);overflow:hidden}
+    .compare-head{display:grid;grid-template-columns:2fr 1fr 1fr;background:var(--surface2);border-bottom:1px solid var(--border)}
+    .compare-head div{padding:1.1rem 1.5rem;font-family:var(--font-h);font-size:.85rem;font-weight:700}
+    .compare-head .hl{color:var(--purple2)}
+    .compare-row{display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid rgba(107,33,255,.07);transition:background var(--trans)}
+    .compare-row:last-child{border:none}
+    .compare-row:hover{background:rgba(107,33,255,.04)}
+    .compare-row div{padding:1rem 1.5rem;font-size:.9rem;color:var(--muted);display:flex;align-items:center}
+    .compare-row .feature-name{color:var(--lavender);font-weight:500}
+    .chk{color:#82FF9E;font-size:1.1rem;font-weight:700}
+    .ex{color:#FF8080;font-size:1rem}
+    /* TESTIMONIALS */
+    .testi-scroll{display:flex;gap:1.5rem;overflow-x:auto;padding-bottom:1rem;scroll-snap-type:x mandatory;scrollbar-width:none}
+    .testi-scroll::-webkit-scrollbar{display:none}
+    .testi-card{background:var(--card);border:1px solid var(--border3);border-radius:var(--r3);padding:2rem;min-width:340px;scroll-snap-align:start;flex-shrink:0;transition:all var(--trans)}
+    .testi-card:hover{border-color:var(--border2);transform:translateY(-4px)}
+    .testi-quote{font-size:3.5rem;color:rgba(107,33,255,.2);line-height:1;font-family:Georgia,serif;margin-bottom:.75rem}
+    .testi-text{font-size:.95rem;color:var(--lavender);line-height:1.75;margin-bottom:1.5rem;font-style:italic}
+    .testi-stars{color:#FFCC45;letter-spacing:2px;font-size:.9rem;margin-bottom:.75rem}
+    .testi-author{display:flex;align-items:center;gap:.75rem}
+    .testi-av{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:var(--font-h);font-size:.9rem}
+    .testi-name{font-weight:700;font-size:.9rem}
+    .testi-role{font-size:.75rem;color:var(--muted2)}
+    /* FAQ */
+    .faq-wrap{max-width:780px;margin:0 auto}
+    .faq-item{border-bottom:1px solid var(--border)}
+    .faq-item:first-child{border-top:1px solid var(--border)}
+    .faq-q{width:100%;background:none;border:none;padding:1.5rem 0;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--white);font-family:var(--font-h);font-size:1rem;font-weight:600;transition:color var(--trans)}
+    .faq-q:hover{color:var(--purple-xl)}
+    .faq-icon{width:28px;height:28px;flex-shrink:0;border-radius:50%;background:rgba(107,33,255,.1);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--purple2);font-size:.85rem;transition:all var(--trans)}
+    .faq-q.open .faq-icon{background:var(--purple2);color:var(--white);transform:rotate(45deg)}
+    .faq-a{display:none;padding-bottom:1.5rem;color:var(--muted);font-size:.95rem;line-height:1.8}
+    .faq-a.open{display:block}
+    /* CTA */
+    .cta-box{background:linear-gradient(135deg,rgba(107,33,255,.18) 0%,rgba(168,85,247,.1) 100%);border:1px solid rgba(107,33,255,.35);border-radius:40px;padding:4rem 3rem;position:relative;overflow:hidden;text-align:center;max-width:680px;margin:0 auto}
+    .cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--purple2),var(--violet),transparent)}
+    .cta-box h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:1rem}
+    .cta-box p{margin-bottom:2rem}
+    .waitlist-form{display:flex;gap:.6rem;background:rgba(255,255,255,.05);border:1px solid rgba(107,33,255,.3);border-radius:100px;padding:.35rem .35rem .35rem 1.5rem;max-width:440px;margin:0 auto 1rem}
+    .waitlist-form input{flex:1;background:none;border:none;outline:none;color:var(--white);font-size:.9rem}
+    .waitlist-form input::placeholder{color:var(--muted2)}
+    .waitlist-form button{background:linear-gradient(135deg,var(--purple),var(--purple2));color:var(--white);border:none;border-radius:100px;padding:.7rem 1.4rem;font-weight:700;font-size:.85rem;cursor:pointer;white-space:nowrap;font-family:var(--font-h);transition:all var(--trans)}
+    .cta-note{font-size:.75rem;color:var(--muted2)}
+    .store-row{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1.75rem}
+    .store-badge{display:flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.05);border:1px solid rgba(107,33,255,.25);border-radius:14px;padding:.7rem 1.2rem;transition:all var(--trans);cursor:pointer}
+    .store-badge:hover{border-color:var(--purple2);background:rgba(107,33,255,.1);transform:translateY(-2px)}
+    .store-badge-icon{font-size:1.5rem}
+    .store-badge-text .sub{font-size:.58rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.08em}
+    .store-badge-text .name{font-size:.875rem;font-weight:700;font-family:var(--font-h)}
+    /* FOOTER */
+    footer{background:var(--surface);border-top:1px solid var(--border);padding:5rem 5% 2.5rem}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:3rem;max-width:1200px;margin:0 auto;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+    .footer-logo{display:flex;align-items:center;gap:.65rem;font-family:var(--font-h);font-size:1.3rem;font-weight:800;margin-bottom:1rem}
+    .footer-logo-img{width:30px;height:30px;border-radius:8px}
+    .footer-brand p{font-size:.875rem;line-height:1.75;max-width:280px}
+    .footer-social{display:flex;gap:.75rem;margin-top:1.5rem}
+    .soc-btn{width:36px;height:36px;border-radius:10px;background:rgba(107,33,255,.1);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--purple-xl);transition:all var(--trans)}
+    .soc-btn:hover{background:rgba(107,33,255,.25);transform:translateY(-2px)}
+    .footer-col h5{font-family:var(--font-h);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem}
+    .footer-col ul{display:flex;flex-direction:column;gap:.75rem}
+    .footer-col a{font-size:.875rem;color:var(--muted);transition:color var(--trans)}
+    .footer-col a:hover{color:var(--purple-xl)}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;max-width:1200px;margin:0 auto;flex-wrap:wrap;gap:1rem}
+    .footer-copy,.footer-made{font-size:.8rem;color:var(--muted2)}
+    .footer-made span{color:var(--purple2)}
+    #back-top{position:fixed;bottom:2rem;right:2rem;z-index:500;width:42px;height:42px;border-radius:12px;background:rgba(107,33,255,.2);border:1px solid var(--border2);color:var(--purple-xl);font-size:1rem;cursor:pointer;display:none;align-items:center;justify-content:center;transition:all var(--trans);backdrop-filter:blur(10px)}
+    #back-top.show{display:flex}
+    #back-top:hover{background:rgba(107,33,255,.4);transform:translateY(-3px)}
+    /* HERO ANIMATION */
+    .hero-left > *{opacity:0;animation:hero-in .7s ease forwards}
+    .hero-left > *:nth-child(1){animation-delay:.05s}
+    .hero-left > *:nth-child(2){animation-delay:.15s}
+    .hero-left > *:nth-child(3){animation-delay:.25s}
+    .hero-left > *:nth-child(4){animation-delay:.35s}
+    .hero-left > *:nth-child(5){animation-delay:.45s}
+    @keyframes hero-in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+    /* RESPONSIVE */
+    @media(max-width:1024px){.feat-grid{grid-template-columns:1fr 1fr}.feat-card.span2{grid-column:span 1}.reality-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:span 2}}
+    @media(max-width:768px){
+      html{font-size:15px}
+      nav{padding:0 4%;height:64px}
+      .nav-links{display:none}
+      .hamburger{display:flex}
+      .mobile-menu{top:64px}
+      section{padding:4rem 4%}
+      .hero{padding:7rem 4% 4rem;min-height:auto}
+      .hero-inner{grid-template-columns:1fr;gap:3rem}
+      .hero-visual{order:-1}
+      .phone-glow-ring{width:320px;height:320px}
+      .phone-shell{width:240px}
+      .chip-1{right:-5px}.chip-2{left:-5px}
+      .feat-grid{grid-template-columns:1fr}
+      .steps-grid{grid-template-columns:1fr 1fr;gap:1rem}
+      .reality-grid{grid-template-columns:1fr}
+      .stats-inner{grid-template-columns:1fr 1fr}
+      .stat-box:nth-child(2){border-right:none}
+      .footer-grid{grid-template-columns:1fr;gap:2rem}
+      .footer-brand{grid-column:span 1}
+      .footer-bottom{flex-direction:column;text-align:center}
+      .compare-head,.compare-row{grid-template-columns:1.5fr 1fr 1fr}
+      .cta-box{padding:2.5rem 1.5rem}
+      .waitlist-form{flex-direction:column;border-radius:16px;padding:.75rem}
+      .waitlist-form button{border-radius:10px;width:100%}
+    }
+    @media(max-width:480px){
+      html{font-size:14px}
+      .steps-grid{grid-template-columns:1fr}
+      .stats-inner{grid-template-columns:1fr 1fr}
+      .stat-box{border-right:none!important;border-bottom:1px solid var(--border);padding:1.25rem}
+      .stat-box:last-child{border-bottom:none}
+      .btn-row{flex-direction:column;align-items:stretch}
+      .btn-row .btn{justify-content:center}
+      .store-row{flex-direction:column;align-items:center}
+      .testi-card{min-width:280px}
+    }
+    @media(max-width:375px){html{font-size:13px}.phone-shell{width:210px}}
   </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav id="nav">
   <a class="nav-logo" href="/index.html">
     <img class="nav-logo-img" src="/apple-touch-icon.png" alt="KashTok Logo">
     Kash<span>Tok</span>
   </a>
   <div class="nav-links">
-    <a href="/index.html">Home</a>
+    <a href="/index.html" class="active">Home</a>
     <a href="/features.html">Features</a>
     <a href="/how-it-works.html">How It Works</a>
     <a href="/security.html">Security</a>
@@ -60,7 +330,7 @@
     <a href="/about.html">About</a>
     <a href="/waitlist.html" class="nav-cta">Join Waitlist</a>
   </div>
-  <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Open menu" aria-expanded="false">
+  <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -76,15 +346,14 @@
   <a href="/waitlist.html">Join Waitlist →</a>
 </div>
 
-<!-- HERO -->
+<!-- ═══ HERO ═══════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="grid-bg"></div>
   <div class="blob blob-a" style="top:-10%;left:-15%"></div>
   <div class="blob blob-b" style="top:30%;right:-10%"></div>
-
   <div class="hero-inner">
-    <!-- Left: Copy -->
-    <div>
+    <!-- LEFT -->
+    <div class="hero-left">
       <div class="hero-eyebrow">
         <div class="eyebrow-dot"></div>
         <span class="eyebrow-text">Now accepting early waitlist</span>
@@ -95,178 +364,146 @@
         <a href="/waitlist.html" class="btn btn-primary btn-lg">Join the Waitlist &rarr;</a>
         <a href="/features.html" class="btn btn-outline btn-lg">See Features</a>
       </div>
-      <div class="hero-trust">
+      <div class="trust-row">
         <span class="trust-pill">CBN-compliant roadmap</span>
         <span class="trust-pill">NDPR data privacy</span>
         <span class="trust-pill">Free to join</span>
         <span class="trust-pill">No spam ever</span>
       </div>
     </div>
-
-    <!-- Right: Phone mockup -->
+    <!-- RIGHT: phone -->
     <div class="hero-visual">
       <div class="phone-glow-ring"></div>
       <div class="phone-float">
         <div class="phone-shell">
-          <div class="phone-screen">
-            <div class="ph-header">
-              <div class="ph-greeting">Good morning,<strong>Adaeze 👋</strong></div>
-              <div class="ph-av">AO</div>
-            </div>
-            <div class="ph-balance">
-              <div class="ph-bal-label">Total Balance</div>
-              <div class="ph-bal-amount"><span>₦</span>284,500.00</div>
-              <div class="ph-bal-change">↑ +₦12,400 this week</div>
-            </div>
-            <div class="ph-actions">
-              <div class="ph-action">
-                <div class="ph-action-ic">💸</div>
-                <div class="ph-action-lbl">Send</div>
-              </div>
-              <div class="ph-action">
-                <div class="ph-action-ic">⚡</div>
-                <div class="ph-action-lbl">Bills</div>
-              </div>
-              <div class="ph-action">
-                <div class="ph-action-ic">🏦</div>
-                <div class="ph-action-lbl">Save</div>
-              </div>
-              <div class="ph-action">
-                <div class="ph-action-ic">💳</div>
-                <div class="ph-action-lbl">Cards</div>
-              </div>
-            </div>
-            <div class="ph-sec-hdr">Recent Activity</div>
-            <div class="ph-tx">
-              <div class="ph-tx-l">
-                <div class="ph-tx-ic" style="background:rgba(107,33,255,.15)">⚡</div>
-                <div><div class="ph-tx-nm">AEDC Electric</div><div class="ph-tx-dt">Today, 8:14am</div></div>
-              </div>
-              <div class="ph-tx-am ph-tx-neg">-₦4,200</div>
-            </div>
-            <div class="ph-tx">
-              <div class="ph-tx-l">
-                <div class="ph-tx-ic" style="background:rgba(130,255,158,.1)">💰</div>
-                <div><div class="ph-tx-nm">Salary Credit</div><div class="ph-tx-dt">Yesterday</div></div>
-              </div>
-              <div class="ph-tx-am ph-tx-pos">+₦180,000</div>
-            </div>
-            <div class="ph-tx">
-              <div class="ph-tx-l">
-                <div class="ph-tx-ic" style="background:rgba(255,128,128,.1)">📺</div>
-                <div><div class="ph-tx-nm">DSTV Subscription</div><div class="ph-tx-dt">2 days ago</div></div>
-              </div>
-              <div class="ph-tx-am ph-tx-neg">-₦6,800</div>
-            </div>
+          <div class="ph-header">
+            <div class="ph-greeting">Good morning,<strong>Adaeze 👋</strong></div>
+            <div class="ph-av">AO</div>
+          </div>
+          <div class="ph-balance">
+            <div class="ph-bal-label">Total Balance</div>
+            <div class="ph-bal-amount"><span>₦</span>284,500.00</div>
+            <div class="ph-bal-change">↑ +₦12,400 this week</div>
+          </div>
+          <div class="ph-actions">
+            <div class="ph-action"><div class="ph-action-ic">💸</div><div class="ph-action-lbl">Send</div></div>
+            <div class="ph-action"><div class="ph-action-ic">⚡</div><div class="ph-action-lbl">Bills</div></div>
+            <div class="ph-action"><div class="ph-action-ic">🏦</div><div class="ph-action-lbl">Save</div></div>
+            <div class="ph-action"><div class="ph-action-ic">💳</div><div class="ph-action-lbl">Cards</div></div>
+          </div>
+          <div class="ph-sec-hdr">Recent Activity</div>
+          <div class="ph-tx">
+            <div class="ph-tx-l"><div class="ph-tx-ic" style="background:rgba(107,33,255,.15)">⚡</div><div><div class="ph-tx-nm">AEDC Electric</div><div class="ph-tx-dt">Today, 8:14am</div></div></div>
+            <div class="ph-tx-am tx-neg">-₦4,200</div>
+          </div>
+          <div class="ph-tx">
+            <div class="ph-tx-l"><div class="ph-tx-ic" style="background:rgba(130,255,158,.1)">💰</div><div><div class="ph-tx-nm">Salary Credit</div><div class="ph-tx-dt">Yesterday</div></div></div>
+            <div class="ph-tx-am tx-pos">+₦180,000</div>
+          </div>
+          <div class="ph-tx">
+            <div class="ph-tx-l"><div class="ph-tx-ic" style="background:rgba(255,128,128,.1)">📺</div><div><div class="ph-tx-nm">DSTV Subscription</div><div class="ph-tx-dt">2 days ago</div></div></div>
+            <div class="ph-tx-am tx-neg">-₦6,800</div>
           </div>
         </div>
-        <!-- Floating chips -->
-        <div class="chip chip-1">
-          <div class="chip-icon">🔒</div>
-          <div class="chip-val">256-bit</div>
-          <div class="chip-lbl">Encrypted</div>
-        </div>
-        <div class="chip chip-2">
-          <div class="chip-icon">📈</div>
-          <div class="chip-val green">+18%</div>
-          <div class="chip-lbl">Savings growth</div>
-        </div>
+        <div class="chip chip-1"><div class="chip-icon">🔒</div><div class="chip-val">256-bit</div><div class="chip-lbl">Encrypted</div></div>
+        <div class="chip chip-2"><div class="chip-icon">📈</div><div class="chip-val green">+18%</div><div class="chip-lbl">Savings growth</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TICKER -->
+<!-- ═══ TICKER ══════════════════════════════════════════════════ -->
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>Instant Transfers</strong> in under 5 seconds</div>
+    <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>Instant Transfers</strong> under 5 seconds</div>
     <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>Virtual Debit Cards</strong> for online shopping</div>
     <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>Electricity, Data & TV</strong> from one wallet</div>
     <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>Smart Savings Vaults</strong> for every goal</div>
     <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>Real-time Insights</strong> where your money goes</div>
-    <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>CBN-compliant</strong> roadmap for full licensing</div>
-    <!-- duplicate for seamless loop -->
-    <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>Instant Transfers</strong> in under 5 seconds</div>
+    <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>CBN-Compliant</strong> full licensing roadmap</div>
+    <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>Instant Transfers</strong> under 5 seconds</div>
     <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>Virtual Debit Cards</strong> for online shopping</div>
     <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>Electricity, Data & TV</strong> from one wallet</div>
     <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>Smart Savings Vaults</strong> for every goal</div>
     <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>Real-time Insights</strong> where your money goes</div>
-    <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>CBN-compliant</strong> roadmap for full licensing</div>
+    <div class="ticker-item"><span class="ticker-dot">◆</span> <strong>CBN-Compliant</strong> full licensing roadmap</div>
   </div>
 </div>
 
-<!-- STATS -->
+<!-- ═══ STATS ═══════════════════════════════════════════════════ -->
 <div class="stats-band">
   <div class="stats-inner">
-    <div class="stat-box fade-up">
-      <div class="stat-number" data-target="12000" data-suffix="+">12,000+</div>
+    <div class="stat-box">
+      <div class="stat-number">12K<span class="accent">+</span></div>
       <div class="stat-text">Waitlist members</div>
     </div>
-    <div class="stat-box fade-up" style="transition-delay:.1s">
+    <div class="stat-box">
       <div class="stat-number"><span class="accent">&lt;</span>5s</div>
       <div class="stat-text">Transfer speed</div>
     </div>
-    <div class="stat-box fade-up" style="transition-delay:.2s">
-      <div class="stat-number" data-target="99" data-suffix="%">99%</div>
-      <div class="stat-text">App uptime target</div>
+    <div class="stat-box">
+      <div class="stat-number">99<span class="accent">%</span></div>
+      <div class="stat-text">Uptime target</div>
     </div>
-    <div class="stat-box fade-up" style="transition-delay:.3s">
-      <div class="stat-number"><span class="accent">0</span></div>
+    <div class="stat-box">
+      <div class="stat-number"><span class="accent">₦0</span></div>
       <div class="stat-text">Hidden fees</div>
     </div>
   </div>
 </div>
 
-<!-- FEATURES PREVIEW -->
+<!-- ═══ FEATURES ════════════════════════════════════════════════ -->
 <section style="background:var(--bg2)">
   <div class="grid-bg"></div>
-  <div class="blob blob-b" style="bottom:-20%;right:-10%;animation-delay:-3s"></div>
-  <div class="container">
-    <div class="section-head center fade-up">
+  <div class="blob blob-b" style="bottom:-20%;right:-10%"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <div class="section-head center">
       <div class="section-label">Why KashTok</div>
       <h2>One app.<br><span class="gradient-text">All your money moves.</span></h2>
-      <p class="section-sub center">Stop running across five platforms and screenshots. KashTok puts everything in one beautifully calm place.</p>
+      <p style="max-width:520px;margin:.75rem auto 0">Stop running across five platforms and screenshots. KashTok puts everything in one beautifully calm place.</p>
     </div>
-    <div class="features-grid">
-      <div class="feat-card fade-up">
+    <div class="feat-grid">
+      <div class="feat-card">
         <div class="feat-icon">💸</div>
         <div class="feat-badge">Transfers</div>
         <h3>Send without chaos</h3>
-        <p>Move money to any Nigerian bank in seconds. No long account numbers. No guesswork. Just tap and done.</p>
+        <p>Move money to any Nigerian bank in seconds. Search your contact, enter amount, tap send. No long account numbers. No guesswork.</p>
       </div>
-      <div class="feat-card fade-up" style="transition-delay:.1s">
+      <div class="feat-card">
         <div class="feat-icon">⚡</div>
         <div class="feat-badge">Bills</div>
-        <h3>Pay every bill</h3>
-        <p>Electricity, data, airtime, DSTV, water — all from the same wallet. Never juggle apps again.</p>
+        <h3>Pay every bill, once</h3>
+        <p>Electricity, data, airtime, DSTV, water — all from the same wallet in one flow. No app-switching. No screenshots as proof.</p>
       </div>
-      <div class="feat-card fade-up" style="transition-delay:.2s">
+      <div class="feat-card">
         <div class="feat-icon">🏦</div>
         <div class="feat-badge">Savings</div>
         <h3>Actually keep money</h3>
-        <p>Create smart vaults for rent, school fees, or rainy days. Set rules. Let KashTok nudge you before you overspend.</p>
+        <p>Create vaults for rent, school fees, travel. Set auto-save rules. KashTok nudges you before you spend what you meant to save.</p>
       </div>
-      <div class="feat-card large fade-up" style="transition-delay:.3s">
+      <div class="feat-card span2">
         <div class="feat-icon">📊</div>
         <div class="feat-badge">Insights</div>
         <h3>Clarity instead of guesswork</h3>
-        <p>See exactly where your money goes — food, transport, black tax, subscriptions. Real numbers, real control.</p>
+        <p>See exactly where your money goes every week — food, transport, black tax, subscriptions. Real numbers, real control. No more end-of-month surprises.</p>
         <div class="mini-chart">
           <div class="bar" style="height:35%"></div>
-          <div class="bar active" style="height:60%"></div>
-          <div class="bar" style="height:45%"></div>
-          <div class="bar active" style="height:80%"></div>
-          <div class="bar" style="height:40%"></div>
-          <div class="bar active" style="height:70%"></div>
-          <div class="bar" style="height:55%"></div>
-          <div class="bar active" style="height:90%"></div>
+          <div class="bar hi" style="height:60%"></div>
+          <div class="bar" style="height:42%"></div>
+          <div class="bar hi" style="height:80%"></div>
+          <div class="bar" style="height:38%"></div>
+          <div class="bar hi" style="height:70%"></div>
+          <div class="bar" style="height:52%"></div>
+          <div class="bar hi" style="height:90%"></div>
+          <div class="bar" style="height:44%"></div>
+          <div class="bar hi" style="height:65%"></div>
         </div>
       </div>
-      <div class="feat-card fade-up" style="transition-delay:.4s">
+      <div class="feat-card">
         <div class="feat-icon">💳</div>
         <div class="feat-badge">Cards</div>
         <h3>Virtual debit card</h3>
-        <p>Get a KashTok virtual card for online shopping, subscriptions, and international payments. Instant issuance.</p>
+        <p>Get a KashTok virtual card instantly. Shop online, pay subscriptions, use internationally — without begging anyone for their dollar card.</p>
       </div>
     </div>
     <div style="text-align:center;margin-top:3rem">
@@ -275,113 +512,238 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS PREVIEW -->
+<!-- ═══ NIGERIAN REALITY ═════════════════════════════════════════ -->
 <section>
   <div class="container">
-    <div class="section-head center fade-up">
-      <div class="section-label">Getting Started</div>
-      <h2>Open an account<br><span class="gradient-text">in minutes.</span></h2>
+    <div class="section-head center">
+      <div class="section-label">Built for Real Life</div>
+      <h2>Designed for the<br><span class="gradient-text">Nigerian money reality.</span></h2>
+      <p style="max-width:520px;margin:.75rem auto 0">We didn't copy a Silicon Valley fintech. We built KashTok from scratch around how Nigerians actually live, earn and spend.</p>
     </div>
-    <div class="steps-grid">
-      <div class="step-card fade-up">
-        <div class="step-num-ring">1</div>
-        <h4>Join the waitlist</h4>
-        <p>Drop your email. We'll tell you exactly when your cohort is ready.</p>
+    <div class="reality-grid">
+      <div class="reality-card">
+        <div class="reality-icon">🌙</div>
+        <div>
+          <h4>Late-night bill panic?</h4>
+          <p style="font-size:.9rem;margin-top:.4rem">AEDC disconnects at 11pm on a Friday? No problem. KashTok works 24/7. Vend token, restore power — in under 30 seconds from your bed.</p>
+        </div>
       </div>
-      <div class="step-card fade-up" style="transition-delay:.1s">
-        <div class="step-num-ring">2</div>
-        <h4>Get your invite</h4>
-        <p>We'll send a secure invite link. No spam, no pressure — just your moment.</p>
+      <div class="reality-card">
+        <div class="reality-icon">📅</div>
+        <div>
+          <h4>Salary delay survival mode</h4>
+          <p style="font-size:.9rem;margin-top:.4rem">Set a "Survival Fund" vault before month-end. KashTok auto-saves a fixed amount every pay day so you always have runway when salary delays.</p>
+        </div>
       </div>
-      <div class="step-card fade-up" style="transition-delay:.2s">
-        <div class="step-num-ring">3</div>
-        <h4>Verify &amp; set up</h4>
-        <p>Quick profile, fund your wallet, create your first savings vault in seconds.</p>
+      <div class="reality-card">
+        <div class="reality-icon">🖤</div>
+        <div>
+          <h4>Track your black tax</h4>
+          <p style="font-size:.9rem;margin-top:.4rem">Family responsibilities are real. KashTok lets you tag transfers as "family" so you can see exactly how much you support others — and plan around it.</p>
+        </div>
       </div>
-      <div class="step-card fade-up" style="transition-delay:.3s">
-        <div class="step-num-ring">4</div>
-        <h4>Use &amp; shape it</h4>
-        <p>Pay bills, move money. Early users help us decide what ships next.</p>
+      <div class="reality-card">
+        <div class="reality-icon">📶</div>
+        <div>
+          <h4>Built for patchy internet</h4>
+          <p style="font-size:.9rem;margin-top:.4rem">KashTok is engineered for low-bandwidth connections. Fast even on 3G. Transactions queue and complete when connection restores. No failed payments.</p>
+        </div>
+      </div>
+      <div class="reality-card">
+        <div class="reality-icon">💵</div>
+        <div>
+          <h4>No more dollar card stress</h4>
+          <p style="font-size:.9rem;margin-top:.4rem">Your KashTok virtual card works for Netflix, Spotify, Canva, AWS — all the subscriptions that used to require begging a friend with a dollar card.</p>
+        </div>
+      </div>
+      <div class="reality-card">
+        <div class="reality-icon">👨‍👩‍👧</div>
+        <div>
+          <h4>Send to anyone in Nigeria</h4>
+          <p style="font-size:.9rem;margin-top:.4rem">Transfer to all 20+ Nigerian banks instantly. Search by phone number or name — no account number memorization required. Just tap and send.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section style="background:var(--bg2);overflow:hidden">
+<!-- ═══ COMPARISON TABLE ═════════════════════════════════════════ -->
+<section style="background:var(--bg2)">
+  <div class="grid-bg"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <div class="section-head center">
+      <div class="section-label">KashTok vs The Rest</div>
+      <h2>Why KashTok wins<br><span class="gradient-text">for Nigerian users.</span></h2>
+      <p style="max-width:500px;margin:.75rem auto 0">Compare us honestly. We built what others didn't bother to.</p>
+    </div>
+    <div class="compare-wrap">
+      <div class="compare-head">
+        <div>Feature</div>
+        <div class="hl">KashTok</div>
+        <div>Typical Fintech</div>
+      </div>
+      <div class="compare-row"><div class="feature-name">Bills + Transfers in one app</div><div><span class="chk">✓</span></div><div><span class="ex">✗ Split apps</span></div></div>
+      <div class="compare-row"><div class="feature-name">Smart savings vaults</div><div><span class="chk">✓</span></div><div><span class="ex">✗ Basic or none</span></div></div>
+      <div class="compare-row"><div class="feature-name">Spending insights (black tax tracking)</div><div><span class="chk">✓</span></div><div><span class="ex">✗ Generic</span></div></div>
+      <div class="compare-row"><div class="feature-name">Virtual dollar card</div><div><span class="chk">✓</span></div><div><span class="ex">± Limited</span></div></div>
+      <div class="compare-row"><div class="feature-name">Works on patchy 3G</div><div><span class="chk">✓</span></div><div><span class="ex">✗ Data-heavy</span></div></div>
+      <div class="compare-row"><div class="feature-name">Zero hidden fees</div><div><span class="chk">✓</span></div><div><span class="ex">✗ Charges everywhere</span></div></div>
+      <div class="compare-row"><div class="feature-name">Human customer support</div><div><span class="chk">✓</span></div><div><span class="ex">✗ Bot-only</span></div></div>
+      <div class="compare-row"><div class="feature-name">Built in Nigeria, for Nigeria</div><div><span class="chk">✓</span></div><div><span class="ex">✗ Adapted from elsewhere</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═════════════════════════════════════════════ -->
+<section>
   <div class="container">
-    <div class="section-head fade-up">
+    <div class="section-head center">
+      <div class="section-label">Getting Started</div>
+      <h2>Open an account<br><span class="gradient-text">in minutes.</span></h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h4>Join the waitlist</h4>
+        <p>Drop your email. We'll tell you exactly when your cohort is ready to onboard.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h4>Get your invite</h4>
+        <p>We send a secure personal invite link. No spam, no pressure — just your moment.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h4>Verify &amp; set up</h4>
+        <p>Quick BVN check, fund your wallet, create your first savings vault. Done in minutes.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h4>Use &amp; shape it</h4>
+        <p>Pay bills, move money, build savings. Early users shape what we build next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═════════════════════════════════════════════ -->
+<section style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-head">
       <div class="section-label">Early Users</div>
       <h2>What Nigerians<br><span class="gradient-text">are saying.</span></h2>
     </div>
-    <div class="testi-scroll fade-up">
+    <div class="testi-scroll">
       <div class="testi-card">
-        <div class="testi-quote-mark">"</div>
+        <div class="testi-quote">"</div>
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">I've been waiting for something like this. Finally a fintech that actually understands Nigerian life — late-night bills, salary delays, all of it.</p>
+        <p class="testi-text">Finally a fintech that actually understands Nigerian life — late-night bills, salary delays, all of it. KashTok is the one I've been waiting for.</p>
         <div class="testi-author">
           <div class="testi-av" style="background:linear-gradient(135deg,#6B21FF,#A855F7)">OA</div>
           <div><div class="testi-name">Obiageli Adewale</div><div class="testi-role">Marketing Manager, Lagos</div></div>
         </div>
       </div>
       <div class="testi-card">
-        <div class="testi-quote-mark">"</div>
+        <div class="testi-quote">"</div>
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">The savings vaults idea is genius. I set one up for school fees and forgot I had money — then I remembered in November. That's never happened before.</p>
+        <p class="testi-text">The savings vaults are genius. Set one up for school fees, forgot about it, remembered in November. That's never happened with any other app.</p>
         <div class="testi-author">
           <div class="testi-av" style="background:linear-gradient(135deg,#7C3AFF,#C4A0FF)">EO</div>
           <div><div class="testi-name">Emeka Okonkwo</div><div class="testi-role">Freelancer, Abuja</div></div>
         </div>
       </div>
       <div class="testi-card">
-        <div class="testi-quote-mark">"</div>
+        <div class="testi-quote">"</div>
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">Being able to pay EKEDC, buy data and check my balance all in one place — I don't miss juggling four apps. KashTok is the move.</p>
+        <p class="testi-text">EKEDC, data, DSTV all in one place. I don't miss juggling four different apps and taking screenshots as proof of payment. KashTok is the move.</p>
         <div class="testi-author">
           <div class="testi-av" style="background:linear-gradient(135deg,#5C17E8,#9B6BFF)">FK</div>
           <div><div class="testi-name">Fatima Khalid</div><div class="testi-role">Entrepreneur, Kano</div></div>
         </div>
       </div>
       <div class="testi-card">
-        <div class="testi-quote-mark">"</div>
+        <div class="testi-quote">"</div>
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">The virtual card is what sold me. No more begging friends with dollar cards for Netflix and Spotify. Finally independent.</p>
+        <p class="testi-text">The virtual card sold me. No more begging friends with dollar cards for Netflix and Spotify. Finally independent. Thank you KashTok.</p>
         <div class="testi-author">
           <div class="testi-av" style="background:linear-gradient(135deg,#6B21FF,#7C3AFF)">CN</div>
           <div><div class="testi-name">Chidi Nwosu</div><div class="testi-role">Student, Port Harcourt</div></div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-  <div class="blob blob-a" style="top:50%;left:50%;transform:translate(-50%,-50%)"></div>
-  <div class="cta-inner fade-up">
-    <div class="cta-box">
-      <div class="section-label" style="justify-content:center">Join the Movement</div>
-      <h2>Be among the first<br><span class="gradient-text">to use KashTok.</span></h2>
-      <p>Join 12,000+ Nigerians already on the waitlist. No spam — only your invite when it's ready.</p>
-      <form class="waitlist-form" id="waitlist-form-main" onsubmit="return false">
-        <input type="email" placeholder="Enter your email address" autocomplete="email" required>
-        <button type="submit">Get Early Access</button>
-      </form>
-      <p class="cta-note">🔒 We respect your privacy. Unsubscribe anytime.</p>
-      <div class="store-row">
-        <div class="store-badge">
-          <div class="store-badge-icon">🍎</div>
-          <div class="store-badge-text"><div class="sub">Coming soon on</div><div class="name">App Store</div></div>
-        </div>
-        <div class="store-badge">
-          <div class="store-badge-icon">▶</div>
-          <div class="store-badge-text"><div class="sub">Coming soon on</div><div class="name">Google Play</div></div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">I track my black tax expenses now. I used to feel guilty about how much I sent family, now I budget for it like any other expense. Game changer.</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#7C3AFF,#A855F7)">AJ</div>
+          <div><div class="testi-name">Amaka Johnson</div><div class="testi-role">Accountant, Enugu</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══ FAQ PREVIEW ══════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-label">FAQ</div>
+      <h2>Quick answers to<br><span class="gradient-text">common questions.</span></h2>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <button class="faq-q">When will KashTok launch? <span class="faq-icon">+</span></button>
+        <div class="faq-a">We're testing with early users now and targeting a public launch in 2025. Join the waitlist and we'll notify you the moment your cohort is ready to onboard.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is KashTok a bank? <span class="faq-icon">+</span></button>
+        <div class="faq-a">No — KashTok is a digital wallet designed to work alongside your bank. Think of it as your everyday money control centre. We're pursuing CBN licensing as we scale.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is my money safe on KashTok? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes. We use 256-bit AES encryption, biometric authentication, device binding and real-time fraud detection. All data handling follows Nigeria's NDPR regulations.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How much does KashTok cost? <span class="faq-icon">+</span></button>
+        <div class="faq-a">KashTok starts completely free. We only charge transparent fees for specific premium services like virtual cards or international transfers. No hidden charges, ever.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What bills can I pay with KashTok? <span class="faq-icon">+</span></button>
+        <div class="faq-a">At launch: electricity (all major DISCOs), airtime and data (MTN, Airtel, Glo, 9mobile), DSTV/GOtv, and more. We're constantly adding billers based on user feedback.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="/faq.html" class="btn btn-ghost">View All FAQs →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══════════════════════════════════════════════════════ -->
+<section style="padding:7rem 5%;position:relative;overflow:hidden">
+  <div class="blob blob-a" style="top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="cta-box" style="position:relative;z-index:2">
+    <div class="section-label" style="justify-content:center">Join the Movement</div>
+    <h2>Be among the first<br><span class="gradient-text">to use KashTok.</span></h2>
+    <p>Join 12,000+ Nigerians already on the waitlist. No spam — only your invite when it's ready.</p>
+    <form class="waitlist-form" onsubmit="handleWaitlist(event)">
+      <input type="email" placeholder="Enter your email address" autocomplete="email" required>
+      <button type="submit">Get Early Access</button>
+    </form>
+    <p class="cta-note">🔒 We respect your privacy. Unsubscribe anytime.</p>
+    <div class="store-row">
+      <div class="store-badge">
+        <div class="store-badge-icon">🍎</div>
+        <div class="store-badge-text"><div class="sub">Coming soon on</div><div class="name">App Store</div></div>
+      </div>
+      <div class="store-badge">
+        <div class="store-badge-icon">▶</div>
+        <div class="store-badge-text"><div class="sub">Coming soon on</div><div class="name">Google Play</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -390,7 +752,7 @@
         Kash<span style="color:var(--purple2)">Tok</span>
       </div>
       <p>Nigeria's smartest digital wallet. Spend, save and pay bills without the banking headache.</p>
-      <p style="margin-top:.5rem;font-size:.78rem;">📍 Lagos, Nigeria &nbsp;·&nbsp; 📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="640c0108080b240f05170c100b0f4a070b09">[email&#160;protected]</a></p>
+      <p style="margin-top:.5rem;font-size:.78rem">📍 Lagos, Nigeria · 📧 hello@kashtok.com</p>
       <div class="footer-social">
         <a href="#" class="soc-btn" aria-label="Twitter">𝕏</a>
         <a href="#" class="soc-btn" aria-label="Instagram">📷</a>
@@ -412,10 +774,8 @@
       <h5>Company</h5>
       <ul>
         <li><a href="/about.html">About Us</a></li>
-        <li><a href="/blog.html">Blog</a></li>
-        <li><a href="/careers.html">Careers</a></li>
         <li><a href="/contact.html">Contact</a></li>
-        <li><a href="/press.html">Press</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -423,8 +783,6 @@
       <ul>
         <li><a href="/privacy.html">Privacy Policy</a></li>
         <li><a href="/terms.html">Terms of Service</a></li>
-        <li><a href="/cookies.html">Cookie Policy</a></li>
-        <li><a href="/faq.html">FAQ</a></li>
       </ul>
     </div>
   </div>
@@ -433,9 +791,47 @@
     <p class="footer-made">Made in Nigeria with <span>💜</span></p>
   </div>
 </footer>
+
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
-<div id="cookie-banner" role="dialog" aria-label="Cookie consent">
-  <p>We use cookies to improve your KashTok experience. See our <a href="/privacy.html">Privacy Policy</a>.</p>
-  <div class="cookie-btns">
-    <button class="ck-accept" onclick="closeCookies()">Accept</button>
-    <button class="ck-
+
+<script>
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav')?.classList.toggle('scrolled', scrollY > 40);
+    document.getElementById('back-top')?.classList.toggle('show', scrollY > 400);
+  });
+  // Hamburger
+  function toggleMobile() {
+    const m = document.getElementById('mobile-menu');
+    const h = document.getElementById('hamburger');
+    const open = m.classList.toggle('open');
+    h.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+  // FAQ
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.faq-q').forEach(b => { b.classList.remove('open'); b.closest('.faq-item').querySelector('.faq-a').classList.remove('open'); });
+      if (!isOpen) { btn.classList.add('open'); btn.closest('.faq-item').querySelector('.faq-a').classList.add('open'); }
+    });
+  });
+  // Waitlist
+  function handleWaitlist(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    const inp = e.target.querySelector('input');
+    btn.textContent = '🎉 You\'re on the list!';
+    btn.style.background = 'linear-gradient(135deg,#16A34A,#22C55E)';
+    btn.disabled = true;
+    inp.value = '';
+    inp.placeholder = 'Check your inbox soon!';
+    setTimeout(() => { btn.textContent = 'Get Early Access'; btn.style.background = ''; btn.disabled = false; inp.placeholder = 'Enter your email address'; }, 5000);
+  }
+</script>
+</body>
+</html>

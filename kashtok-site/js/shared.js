@@ -57,12 +57,12 @@ const io = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
 
 // ── Cookie banner
-function closeCookies() {
-  const b = document.getElementById('cookie-banner');
+
+
   if (b) { b.style.opacity = '0'; b.style.transform = 'translate(-50%, 20px)'; setTimeout(() => b.remove(), 400); }
   try { localStorage.setItem('kt_cookies', '1'); } catch(e){}
 }
-try { if (localStorage.getItem('kt_cookies')) document.getElementById('cookie-banner')?.remove(); } catch(e){}
+
 
 // ── Waitlist forms
 document.querySelectorAll('.waitlist-form, #waitlist-form-main').forEach(form => {
